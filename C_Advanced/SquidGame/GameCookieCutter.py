@@ -24,7 +24,7 @@ def Game():
     clock = pygame.time.Clock()
 
     # Webcam
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     cap.set(3, 1280)  # width
     cap.set(4, 720)  # height
 
@@ -92,7 +92,7 @@ def Game():
         # OpenCV
         success, img = cap.read()
         img = cv2.flip(img, 1)
-        hands = detector.findHands(img, draw=False)
+        hands, img = detector.findHands(img, draw=False)
 
         if gameOver is False and gameWon is False:
 

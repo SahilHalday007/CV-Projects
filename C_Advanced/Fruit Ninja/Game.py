@@ -20,14 +20,14 @@ def Game():
     # Create Window/Display
     width, height = 1280, 720
     window = pygame.display.set_mode((width, height))
-    pygame.display.set_caption("MACHO MACHO")
+    pygame.display.set_caption("Fruit Slicer")
 
     # Initialize Clock for FPS
     fps = 30
     clock = pygame.time.Clock()
 
     # Webcam
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     cap.set(3, width)  # width
     cap.set(4, height)  # height
 
@@ -100,7 +100,7 @@ def Game():
             success, img = cap.read()
             img = cv2.flip(img, 1)
 
-            hands = detector.findHands(img, draw=False)
+            hands, img = detector.findHands(img, draw=False)
 
             imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             imgRGB = np.rot90(imgRGB)

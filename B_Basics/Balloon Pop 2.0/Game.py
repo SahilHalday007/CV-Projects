@@ -82,7 +82,7 @@ def Game():
     # Create Window/Display
     width, height = 1280, 720
     window = pygame.display.set_mode((width, height))
-    pygame.display.set_caption("MACHO MACHO")
+    pygame.display.set_caption("Fruit Slicer")
 
     # Initialize Clock for FPS
     fps = 30
@@ -117,7 +117,7 @@ def Game():
                            scale=0.5)
 
     # webcam
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     cap.set(3, 1280)
     cap.set(4, 720)
 
@@ -184,7 +184,7 @@ def Game():
 
             for i, balloon in enumerate(balloons):
                 if balloon:
-                    balloon_score = balloon.check_pop()
+                    balloon_score = balloon.check_pop(x, y)
                     if balloon_score:
                         score += balloon_score // 10
                         balloons[i] = False
