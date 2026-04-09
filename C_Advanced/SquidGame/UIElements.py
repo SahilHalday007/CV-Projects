@@ -2,7 +2,6 @@ import pygame
 import math
 
 class UIElements:
-    """Handle all UI drawing and animations"""
 
     def __init__(self, width, height):
         self.width = width
@@ -20,7 +19,7 @@ class UIElements:
             self.font_small = pygame.font.Font(None, 36)
 
     def draw_timer(self, window, time_left, time_total):
-        """Draw animated timer with progress bar"""
+
         self.frame_count += 1
 
         # Timer position and dimensions
@@ -167,3 +166,13 @@ class UIElements:
         overlay = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
         overlay.fill((0, 0, 0, int(alpha)))
         window.blit(overlay, (0, 0))
+
+def FadeTransition(window, width, height):
+    """Smooth fade to black"""
+    fade = pygame.Surface((width, height))
+    fade.fill((0, 0, 0))
+    for alpha in range(0, 300, 15): # Faster fade
+        fade.set_alpha(alpha)
+        window.blit(fade, (0, 0))
+        pygame.display.update()
+        pygame.time.delay(10)

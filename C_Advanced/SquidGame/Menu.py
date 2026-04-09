@@ -5,9 +5,7 @@ from B_Basics.CustomClasses.Button import ButtonImg
 
 
 def Menu():
-    """Main Menu with fullscreen support"""
-
-    # Initialize
+    # Initialize pygame
     pygame.init()
     pygame.event.clear()
 
@@ -52,8 +50,8 @@ def Menu():
                            pathSoundHover="../../Resources/Sounds/hover.mp3")
 
     # Font for labels
-    font_large = pygame.font.Font(None, 60)
-    font_small = pygame.font.Font(None, 40)
+    font_large = pygame.font.Font("../../Resources/Marcellus-Regular.ttf", 60)
+    font_small = pygame.font.Font("../../Resources/Marcellus-Regular.ttf", 40)
 
     # Main loop
     start = True
